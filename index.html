@@ -229,6 +229,239 @@
         color: #ffffff;
       }
 
+      /* Modern pricing card styles */
+      .pricing-card {
+        background: #ffffff;
+        border-radius: 16px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+        overflow: hidden;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .pricing-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 16px 48px rgba(0, 0, 0, 0.15);
+      }
+
+      .pricing-card .card-header {
+        padding: 24px 20px 20px;
+        text-align: center;
+        color: #ffffff;
+        position: relative;
+      }
+
+      .pricing-card .card-header::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 3px;
+        background: rgba(255, 255, 255, 0.3);
+        border-radius: 2px;
+      }
+
+      .pricing-card .card-header h4 {
+        margin: 0 0 8px;
+        font-size: 1.25rem;
+        font-weight: 700;
+      }
+
+      .pricing-card .card-header .subtitle {
+        margin: 0;
+        opacity: 0.9;
+        font-size: 0.9rem;
+      }
+
+      .pricing-card .card-body {
+        padding: 24px 20px;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .pricing-card .price {
+        font-size: 2.5rem;
+        font-weight: 800;
+        text-align: center;
+        margin-bottom: 20px;
+        color: #212529;
+      }
+
+      .pricing-card .features {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 24px;
+        flex: 1;
+      }
+
+      .pricing-card .features li {
+        padding: 8px 0;
+        color: #495057;
+        font-weight: 500;
+        border-bottom: 1px solid #f1f3f4;
+      }
+
+      .pricing-card .features li:last-child {
+        border-bottom: none;
+      }
+
+      .pricing-card .btn {
+        width: 100%;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 12px;
+        font-weight: 600;
+        font-size: 1rem;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .pricing-card .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      }
+
+      /* Netflix card styling */
+      .netflix-card .card-header {
+        background: linear-gradient(135deg, #b12727 0%, #ff3b3b 100%);
+      }
+
+      .netflix-card .btn {
+        background: linear-gradient(135deg, #b12727 0%, #ff3b3b 100%);
+        color: #ffffff;
+      }
+
+      /* Shahid card styling */
+      .shahid-card .card-header {
+        background: linear-gradient(135deg, #00b3b3 0%, #87ceeb 100%);
+      }
+
+      .shahid-card .btn {
+        background: linear-gradient(135deg, #00b3b3 0%, #87ceeb 100%);
+        color: #ffffff;
+      }
+
+      /* Featured card styling */
+      .pricing-card.featured {
+        position: relative;
+        border: 2px solid #ffd700;
+        box-shadow: 0 12px 40px rgba(255, 215, 0, 0.25);
+        transform: scale(1.02);
+      }
+
+      .pricing-card.featured:hover {
+        transform: translateY(-8px) scale(1.02);
+        box-shadow: 0 20px 56px rgba(255, 215, 0, 0.35);
+      }
+
+      .featured-badge {
+        position: absolute;
+        top: -12px;
+        right: 20px;
+        background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+        color: #8b4513;
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-weight: 800;
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        box-shadow: 0 4px 12px rgba(255, 215, 0, 0.4);
+        z-index: 10;
+        animation: featuredGlow 2s ease-in-out infinite alternate;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        overflow: hidden;
+      }
+
+      .featured-badge::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.6),
+          transparent
+        );
+        animation: shimmer 2s ease-in-out infinite;
+        z-index: 1;
+      }
+
+      .featured-badge i {
+        font-size: 1rem;
+        animation: crownSparkle 1.5s ease-in-out infinite;
+        filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.8));
+        position: relative;
+        z-index: 2;
+      }
+
+      .featured-badge span {
+        font-size: 0.8rem;
+        position: relative;
+        z-index: 2;
+      }
+
+      @keyframes featuredGlow {
+        0% {
+          box-shadow: 0 4px 12px rgba(255, 215, 0, 0.4);
+        }
+        100% {
+          box-shadow: 0 4px 20px rgba(255, 215, 0, 0.7),
+            0 0 30px rgba(255, 215, 0, 0.3);
+        }
+      }
+
+      @keyframes crownSparkle {
+        0%,
+        100% {
+          transform: scale(1) rotate(0deg);
+          filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.8));
+        }
+        25% {
+          transform: scale(1.1) rotate(-5deg);
+          filter: drop-shadow(0 0 12px rgba(255, 215, 0, 1));
+        }
+        50% {
+          transform: scale(1.15) rotate(0deg);
+          filter: drop-shadow(0 0 16px rgba(255, 215, 0, 1));
+        }
+        75% {
+          transform: scale(1.1) rotate(5deg);
+          filter: drop-shadow(0 0 12px rgba(255, 215, 0, 1));
+        }
+      }
+
+      @keyframes shimmer {
+        0% {
+          left: -100%;
+        }
+        100% {
+          left: 100%;
+        }
+      }
+
+      /* Responsive adjustments for featured cards */
+      @media (max-width: 768px) {
+        .pricing-card.featured {
+          transform: scale(1.01);
+        }
+        .featured-badge {
+          right: 15px;
+          padding: 6px 12px;
+          font-size: 0.8rem;
+        }
+      }
+
       /* Service selection buttons */
       .service-selector {
         text-align: center;
@@ -770,140 +1003,78 @@
               <h3 class="text-center mb-4 text-primary">اشتراكات نتفلكس</h3>
             </div>
             <div class="col-lg-3 col-md-6 mb-4">
-              <div class="flip-card">
-                <div class="flip-card-inner">
-                  <div class="flip-card-front">
-                    <div class="card h-100 shadow">
-                      <div
-                        class="card-header bg-primary text-white text-center"
-                      >
-                        <h4>حساب خاص</h4>
-                        <p class="mb-0">ببريدك الإلكتروني</p>
-                      </div>
-                      <div class="card-body text-center">
-                        <h2 class="text-primary">85 ر.س</h2>
-                        <p class="text-muted">اضغط لعرض التفاصيل</p>
-                        <button class="btn btn-primary btn-block">
-                          اطلب الآن
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="flip-card-back">
-                    <h4>تفاصيل الحساب الخاص</h4>
-                    <ul class="features">
-                      <li>✓ حساب خاص</li>
-                      <li>✓ بريدك الإلكتروني</li>
-                      <li>✓ 5 ملفات شخصية</li>
-                      <li>✓ غير مشترك</li>
-                      <li>✓ جودة Full HD و4K</li>
-                      <li>✓ تحميل للمشاهدة دون اتصال</li>
-                    </ul>
-                    <button class="btn btn-primary">اطلب الآن</button>
-                  </div>
+              <div class="pricing-card netflix-card featured">
+                <div class="featured-badge">
+                  <i class="fas fa-crown"></i>
+                  <span>الأفضل</span>
+                </div>
+                <div class="card-header">
+                  <h4>حساب خاص</h4>
+                  <p class="subtitle">ببريدك الإلكتروني</p>
+                </div>
+                <div class="card-body">
+                  <div class="price">85 ر.س</div>
+                  <ul class="features">
+                    <li>✓ حساب خاص</li>
+                    <li>✓ 5 ملفات شخصية</li>
+                    <li>✓ جودة Full HD و4K</li>
+                    <li>✓ تحميل للمشاهدة دون اتصال</li>
+                  </ul>
+                  <button class="btn btn-primary">اطلب الآن</button>
                 </div>
               </div>
             </div>
             <div class="col-lg-3 col-md-6 mb-4">
-              <div class="flip-card">
-                <div class="flip-card-inner">
-                  <div class="flip-card-front">
-                    <div class="card h-100 shadow">
-                      <div
-                        class="card-header bg-success text-white text-center"
-                      >
-                        <h4>3 أشهر</h4>
-                        <p class="mb-0">حساب مشترك</p>
-                      </div>
-                      <div class="card-body text-center">
-                        <h2 class="text-success">20 ر.س</h2>
-                        <p class="text-muted">اضغط لعرض التفاصيل</p>
-                        <button class="btn btn-success btn-block">
-                          اطلب الآن
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="flip-card-back">
-                    <h4>تفاصيل 3 أشهر</h4>
-                    <ul class="features">
-                      <li>✓ مدة 3 أشهر</li>
-                      <li>✓ حساب مشترك</li>
-                      <li>✓ جودة Full HD</li>
-                      <li>✓ تفعيل فوري</li>
-                      <li>✓ دعم 24/7</li>
-                      <li>✓ ضمان استبدال</li>
-                    </ul>
-                    <button class="btn btn-success">اطلب الآن</button>
-                  </div>
+              <div class="pricing-card netflix-card">
+                <div class="card-header">
+                  <h4>3 أشهر</h4>
+                  <p class="subtitle">حساب مشترك</p>
+                </div>
+                <div class="card-body">
+                  <div class="price">20 ر.س</div>
+                  <ul class="features">
+                    <li>✓ حساب مشترك</li>
+                    <li>✓ جودة Full HD</li>
+                    <li>✓ تفعيل فوري</li>
+                    <li>✓ دعم 24/7</li>
+                  </ul>
+                  <button class="btn btn-success">اطلب الآن</button>
                 </div>
               </div>
             </div>
             <div class="col-lg-3 col-md-6 mb-4">
-              <div class="flip-card">
-                <div class="flip-card-inner">
-                  <div class="flip-card-front">
-                    <div class="card h-100 shadow">
-                      <div class="card-header bg-info text-white text-center">
-                        <h4>6 أشهر</h4>
-                        <p class="mb-0">حساب مشترك</p>
-                      </div>
-                      <div class="card-body text-center">
-                        <h2 class="text-info">34 ر.س</h2>
-                        <p class="text-muted">اضغط لعرض التفاصيل</p>
-                        <button class="btn btn-info btn-block">
-                          Order Now
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="flip-card-back">
-                    <h4>تفاصيل 6 أشهر</h4>
-                    <ul class="features">
-                      <li>✓ مدة 6 أشهر</li>
-                      <li>✓ حساب مشترك</li>
-                      <li>✓ جودة Full HD</li>
-                      <li>✓ أفضل قيمة</li>
-                      <li>✓ دعم أولوية</li>
-                      <li>✓ استبدال مجاني</li>
-                    </ul>
-                    <button class="btn btn-info">Order Now</button>
-                  </div>
+              <div class="pricing-card netflix-card">
+                <div class="card-header">
+                  <h4>6 أشهر</h4>
+                  <p class="subtitle">حساب مشترك</p>
+                </div>
+                <div class="card-body">
+                  <div class="price">34 ر.س</div>
+                  <ul class="features">
+                    <li>✓ حساب مشترك</li>
+                    <li>✓ جودة Full HD</li>
+                    <li>✓ دعم أولوية</li>
+                    <li>✓ أفضل قيمة</li>
+                  </ul>
+                  <button class="btn btn-info">اطلب الآن</button>
                 </div>
               </div>
             </div>
             <div class="col-lg-3 col-md-6 mb-4">
-              <div class="flip-card">
-                <div class="flip-card-inner">
-                  <div class="flip-card-front">
-                    <div class="card h-100 shadow">
-                      <div
-                        class="card-header bg-warning text-white text-center"
-                      >
-                        <h4>سنة</h4>
-                        <p class="mb-0">حساب مشترك</p>
-                      </div>
-                      <div class="card-body text-center">
-                        <h2 class="text-warning">50 ر.س</h2>
-                        <p class="text-muted">اضغط لعرض التفاصيل</p>
-                        <button class="btn btn-warning btn-block">
-                          Order Now
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="flip-card-back">
-                    <h4>تفاصيل سنة</h4>
-                    <ul class="features">
-                      <li>✓ مدة 12 شهر</li>
-                      <li>✓ حساب مشترك</li>
-                      <li>✓ جودة Full HD</li>
-                      <li>✓ توفير أقصى</li>
-                      <li>✓ دعم VIP</li>
-                      <li>✓ ضمان مدى الحياة</li>
-                    </ul>
-                    <button class="btn btn-warning">اطلب الآن</button>
-                  </div>
+              <div class="pricing-card netflix-card">
+                <div class="card-header">
+                  <h4>سنة</h4>
+                  <p class="subtitle">حساب مشترك</p>
+                </div>
+                <div class="card-body">
+                  <div class="price">50 ر.س</div>
+                  <ul class="features">
+                    <li>✓ حساب مشترك</li>
+                    <li>✓ توفير أقصى</li>
+                    <li>✓ دعم VIP</li>
+                    <li>✓ ضمان مدى الحياة</li>
+                  </ul>
+                  <button class="btn btn-warning">اطلب الآن</button>
                 </div>
               </div>
             </div>
@@ -917,140 +1088,78 @@
               <h3 class="text-center mb-4 text-primary">اشتراكات شاهد VIP</h3>
             </div>
             <div class="col-lg-3 col-md-6 mb-4">
-              <div class="flip-card">
-                <div class="flip-card-inner">
-                  <div class="flip-card-front">
-                    <div class="card h-100 shadow">
-                      <div
-                        class="card-header bg-primary text-white text-center"
-                      >
-                        <h4>حساب خاص</h4>
-                        <p class="mb-0">بياناتك الخاصة</p>
-                      </div>
-                      <div class="card-body text-center">
-                        <h2 class="text-primary">80 ر.س</h2>
-                        <p class="text-muted">اضغط لعرض التفاصيل</p>
-                        <button class="btn btn-primary btn-block">
-                          Order Now
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="flip-card-back">
-                    <h4>تفاصيل الحساب الخاص</h4>
-                    <ul class="features">
-                      <li>✓ حساب خاص</li>
-                      <li>✓ بيانات خاصة بك</li>
-                      <li>✓ محتوى عربي مميز</li>
-                      <li>✓ غير مشترك</li>
-                      <li>✓ تجربة بلا إعلانات</li>
-                      <li>✓ تحميل المحتوى</li>
-                    </ul>
-                    <button class="btn btn-primary">اطلب الآن</button>
-                  </div>
+              <div class="pricing-card shahid-card featured">
+                <div class="featured-badge">
+                  <i class="fas fa-crown"></i>
+                  <span>الأفضل</span>
+                </div>
+                <div class="card-header">
+                  <h4>حساب خاص</h4>
+                  <p class="subtitle">بياناتك الخاصة</p>
+                </div>
+                <div class="card-body">
+                  <div class="price">80 ر.س</div>
+                  <ul class="features">
+                    <li>✓ حساب خاص</li>
+                    <li>✓ محتوى عربي مميز</li>
+                    <li>✓ تحميل المحتوى</li>
+                    <li>✓ تجربة بلا إعلانات</li>
+                  </ul>
+                  <button class="btn btn-primary">اطلب الآن</button>
                 </div>
               </div>
             </div>
             <div class="col-lg-3 col-md-6 mb-4">
-              <div class="flip-card">
-                <div class="flip-card-inner">
-                  <div class="flip-card-front">
-                    <div class="card h-100 shadow">
-                      <div
-                        class="card-header bg-success text-white text-center"
-                      >
-                        <h4>3 أشهر</h4>
-                        <p class="mb-0">حساب مشترك</p>
-                      </div>
-                      <div class="card-body text-center">
-                        <h2 class="text-success">18 ر.س</h2>
-                        <p class="text-muted">اضغط لعرض التفاصيل</p>
-                        <button class="btn btn-success btn-block">
-                          Order Now
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="flip-card-back">
-                    <h4>تفاصيل 3 أشهر</h4>
-                    <ul class="features">
-                      <li>✓ مدة 3 أشهر</li>
-                      <li>✓ حساب مشترك</li>
-                      <li>✓ محتوى عربي مميز</li>
-                      <li>✓ مشاهدة بدون إعلانات</li>
-                      <li>✓ تفعيل فوري</li>
-                      <li>✓ دعم عملاء</li>
-                    </ul>
-                    <button class="btn btn-success">اطلب الآن</button>
-                  </div>
+              <div class="pricing-card shahid-card">
+                <div class="card-header">
+                  <h4>3 أشهر</h4>
+                  <p class="subtitle">حساب مشترك</p>
+                </div>
+                <div class="card-body">
+                  <div class="price">18 ر.س</div>
+                  <ul class="features">
+                    <li>✓ حساب مشترك</li>
+                    <li>✓ مشاهدة بدون إعلانات</li>
+                    <li>✓ تفعيل فوري</li>
+                    <li>✓ دعم عملاء</li>
+                  </ul>
+                  <button class="btn btn-success">اطلب الآن</button>
                 </div>
               </div>
             </div>
             <div class="col-lg-3 col-md-6 mb-4">
-              <div class="flip-card">
-                <div class="flip-card-inner">
-                  <div class="flip-card-front">
-                    <div class="card h-100 shadow">
-                      <div class="card-header bg-info text-white text-center">
-                        <h4>6 أشهر</h4>
-                        <p class="mb-0">حساب مشترك</p>
-                      </div>
-                      <div class="card-body text-center">
-                        <h2 class="text-info">28 ر.س</h2>
-                        <p class="text-muted">اضغط لعرض التفاصيل</p>
-                        <button class="btn btn-info btn-block">
-                          Order Now
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="flip-card-back">
-                    <h4>تفاصيل 6 أشهر</h4>
-                    <ul class="features">
-                      <li>✓ مدة 6 أشهر</li>
-                      <li>✓ حساب مشترك</li>
-                      <li>✓ محتوى عربي مميز</li>
-                      <li>✓ أفضل قيمة</li>
-                      <li>✓ دعم أولوية</li>
-                      <li>✓ حماية الحساب</li>
-                    </ul>
-                    <button class="btn btn-info">Order Now</button>
-                  </div>
+              <div class="pricing-card shahid-card">
+                <div class="card-header">
+                  <h4>6 أشهر</h4>
+                  <p class="subtitle">حساب مشترك</p>
+                </div>
+                <div class="card-body">
+                  <div class="price">28 ر.س</div>
+                  <ul class="features">
+                    <li>✓ حساب مشترك</li>
+                    <li>✓ أفضل قيمة</li>
+                    <li>✓ دعم أولوية</li>
+                    <li>✓ حماية الحساب</li>
+                  </ul>
+                  <button class="btn btn-info">اطلب الآن</button>
                 </div>
               </div>
             </div>
             <div class="col-lg-3 col-md-6 mb-4">
-              <div class="flip-card">
-                <div class="flip-card-inner">
-                  <div class="flip-card-front">
-                    <div class="card h-100 shadow">
-                      <div
-                        class="card-header bg-warning text-white text-center"
-                      >
-                        <h4>سنة</h4>
-                        <p class="mb-0">حساب مشترك</p>
-                      </div>
-                      <div class="card-body text-center">
-                        <h2 class="text-warning">40 ر.س</h2>
-                        <p class="text-muted">اضغط لعرض التفاصيل</p>
-                        <button class="btn btn-warning btn-block">
-                          Order Now
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="flip-card-back">
-                    <h4>تفاصيل سنة</h4>
-                    <ul class="features">
-                      <li>✓ مدة 12 شهر</li>
-                      <li>✓ حساب مشترك</li>
-                      <li>✓ محتوى عربي مميز</li>
-                      <li>✓ توفير أقصى</li>
-                      <li>✓ دعم VIP</li>
-                      <li>✓ ضمان ممتد</li>
-                    </ul>
-                    <button class="btn btn-warning">اطلب الآن</button>
-                  </div>
+              <div class="pricing-card shahid-card">
+                <div class="card-header">
+                  <h4>سنة</h4>
+                  <p class="subtitle">حساب مشترك</p>
+                </div>
+                <div class="card-body">
+                  <div class="price">40 ر.س</div>
+                  <ul class="features">
+                    <li>✓ محتوى عربي مميز</li>
+                    <li>✓ دعم VIP</li>
+                    <li>✓ ضمان ممتد</li>
+                    <li>✓ توفير أقصى</li>
+                  </ul>
+                  <button class="btn btn-warning">اطلب الآن</button>
                 </div>
               </div>
             </div>
@@ -1061,10 +1170,8 @@
 
     <!-- About-->
 
-    <!-- Team-->
 
     <!-- Clients-->
-
     <!-- Testimonials -->
     <section class="page-section" id="testimonials">
       <div class="container">
@@ -1270,11 +1377,11 @@
     <!-- Footer-->
     <footer class="footer py-4">
       <div class="container">
-        <div class="row align-items-center">
-          <div class="col-lg-4 text-lg-start">
+        <div class="row">
+          <div class="col-12 text-center">
             <p>
               All rights reserved &copy; 2025
-              <span style="font-weight: bold">Alfarouk Aljowaily</span>
+              <span style="font-weight: bold">Alfarouk Aljwely</span>
               for
               <span style="color: #00ce29; font-weight: bold">SubFasts</span>
               | <a href="#" style="color: #fff; text-decoration: none;
@@ -1345,23 +1452,7 @@
           .scrollIntoView({ behavior: "smooth" });
       }
 
-      // Flip on hover or click; reset on mouse leave or outside click
-      const flipCards = document.querySelectorAll(".flip-card");
-      flipCards.forEach((card) => {
-        card.addEventListener("click", function (event) {
-          event.stopPropagation();
-          flipCards.forEach((c) => c.classList.remove("flipped"));
-          this.classList.add("flipped");
-        });
-
-        card.addEventListener("mouseleave", function () {
-          this.classList.remove("flipped");
-        });
-      });
-
-      document.addEventListener("click", function () {
-        flipCards.forEach((c) => c.classList.remove("flipped"));
-      });
+      // Modern pricing cards (no flipping)
 
       // Testimonials slider JS (RTL-aware)
       (function () {
@@ -1478,6 +1569,5 @@
       })();
     </script>
 
-    <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
   </body>
 </html>
