@@ -1,0 +1,1483 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="سَبفاستس - خدمات اشتراكات مميزة" />
+    <meta name="author" content="subfasts" />
+    <title>سَبفاستس - اشتراكات مميزة</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Font Awesome icons (free version)-->
+    <script
+      src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Google fonts-->
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:400,700"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="css/styles.css" rel="stylesheet" />
+    <!-- Custom styles for circular images, flipping cards, and smooth animations -->
+    <style>
+      /* Circular service images with spacing */
+      .service-icon {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        overflow: hidden;
+        /* background: linear-gradient(135deg, #007bff, #0056b3); */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 20px;
+        /* box-shadow: 0 8px 25px rgba(0, 123, 255, 0.3); */
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+
+      .service-icon:hover {
+        transform: translateY(-5px);
+        /* box-shadow: 0 12px 35px rgba(0, 123, 255, 0.4); */
+      }
+
+      .service-icon i {
+        font-size: 3rem;
+        color: white;
+      }
+
+      .service-item {
+        padding: 30px 20px;
+        transition: all 0.3s ease;
+      }
+
+      .service-item:hover {
+        transform: translateY(-5px);
+      }
+
+      .service-icon img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* عشان تملأ الدائرة من غير ما تتمدد غلط */
+        border-radius: 50%; /* يخلي الصورة نفسها دائرية */
+      }
+
+      /* Flipping card styles */
+      .flip-card {
+        background-color: transparent;
+        width: 100%;
+        height: 400px;
+        perspective: 1000px;
+        margin-bottom: 30px;
+      }
+
+      .flip-card-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+        transform-style: preserve-3d;
+        will-change: transform;
+        cursor: pointer;
+      }
+
+      .flip-card:hover .flip-card-inner,
+      .flip-card.flipped .flip-card-inner {
+        transform: rotateY(180deg);
+      }
+
+      .flip-card-front,
+      .flip-card-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        border-radius: 15px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+      }
+
+      .flip-card-back {
+        transform: rotateY(180deg);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+      }
+
+      .flip-card-back h4 {
+        color: inherit;
+        margin-bottom: 20px;
+      }
+
+      .flip-card-back .features {
+        list-style: none;
+        padding: 0;
+        margin: 20px 0;
+      }
+
+      .flip-card-back .features li {
+        padding: 8px 0;
+        color: inherit;
+        font-weight: 500;
+      }
+
+      /* Make inner bootstrap card transparent so section-specific styles show */
+      .flip-card-front .card,
+      .flip-card-back .card {
+        background: transparent;
+        border: 0;
+        box-shadow: none;
+      }
+
+      .flip-card-front .card-header,
+      .flip-card-front .card-body {
+        border: 0;
+      }
+
+      /* Center front card body vertically between header and bottom */
+      .flip-card-front .card {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .flip-card-front .card-body.text-center {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      /* Card body pearl background for readability */
+      .flip-card-front .card-body {
+        background: #f8f7f3; /* pearl white */
+        color: #212529;
+        border-bottom-left-radius: 15px;
+        border-bottom-right-radius: 15px;
+      }
+
+      /* Netflix: gradient only on header */
+      #netflix-pricing .flip-card-front .card-header {
+        background: linear-gradient(135deg, #b12727 0%, #ff3b3b 100%);
+        color: #ffffff;
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+      }
+
+      /* Shahid: gradient only on header */
+      #shahid-pricing .flip-card-front .card-header {
+        background: linear-gradient(135deg, #00b3b3 0%, #87ceeb 100%);
+        color: #ffffff;
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+      }
+
+      /* Back side uses pearl background for clarity */
+      .flip-card-back {
+        background: #f8f7f3;
+        color: #212529;
+        border-radius: 15px;
+      }
+
+      /* Buttons styling within flip cards */
+      .flip-card .btn {
+        display: inline-block;
+        width: 100%;
+        border: 0;
+        border-radius: 12px;
+        padding: 10px 14px;
+        font-weight: 600;
+        transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+      }
+
+      .flip-card .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      }
+
+      .flip-card .btn:active {
+        transform: translateY(0);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+        opacity: 0.95;
+      }
+
+      /* Netflix buttons: red gradient */
+      #netflix-pricing .flip-card .btn {
+        background: linear-gradient(135deg, #7a0a0a 0%, #ff3b3b 100%);
+        color: #ffffff;
+      }
+
+      /* Shahid buttons: teal/cyan to sky blue */
+      #shahid-pricing .flip-card .btn {
+        background: linear-gradient(135deg, #00b3b3 0%, #87ceeb 100%);
+        color: #ffffff;
+      }
+
+      /* Service selection buttons */
+      .service-selector {
+        text-align: center;
+        margin-bottom: 50px;
+      }
+
+      .service-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: #f8f7f3;
+        color: #212529;
+        border: 1px solid #e2e2e2;
+        padding: 10px 18px;
+        margin: 0 10px;
+        border-radius: 28px;
+        font-weight: 600;
+        transition: transform 0.2s ease, box-shadow 0.2s ease,
+          background 0.3s ease, color 0.3s ease;
+        cursor: pointer;
+      }
+
+      .service-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+      }
+
+      .service-btn img {
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        object-fit: cover;
+        display: block;
+      }
+
+      /* Active gradients for selector */
+      .service-btn.active[onclick="showNetflixPricing()"] {
+        background: linear-gradient(135deg, #7a0a0a 0%, #ff3b3b 100%);
+        color: #ffffff;
+        border-color: transparent;
+        box-shadow: 0 6px 18px rgba(255, 59, 59, 0.35);
+      }
+
+      .service-btn.active[onclick="showShahidPricing()"] {
+        background: linear-gradient(135deg, #00b3b3 0%, #87ceeb 100%);
+        color: #ffffff;
+        border-color: transparent;
+        box-shadow: 0 6px 18px rgba(0, 179, 179, 0.35);
+      }
+
+      /* Hide/show pricing sections */
+      .pricing-section {
+        display: none;
+        animation: fadeIn 0.5s ease-in;
+      }
+
+      .pricing-section.active {
+        display: block;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Smooth scrolling */
+      html {
+        scroll-behavior: smooth;
+      }
+
+      /* Contact CTA styles */
+      .contact-cta {
+        background: linear-gradient(180deg, #1f3b82 0%, #203b7d 100%);
+        color: #e9ecef;
+        padding-top: 60px;
+        padding-bottom: 60px;
+      }
+
+      .contact-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      @media (min-width: 768px) {
+        .contact-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+
+      .contact-col {
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 14px;
+        padding: 22px;
+      }
+
+      .contact-title {
+        margin: 0 0 18px;
+        color: #ffffff;
+      }
+
+      .contact-cards {
+        display: grid;
+        gap: 14px;
+      }
+
+      .contact-card {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 12px;
+        padding: 12px 14px;
+        color: #e9ecef;
+        text-decoration: none;
+        transition: transform 0.2s ease, box-shadow 0.2s ease,
+          background 0.2s ease;
+      }
+
+      .contact-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 22px rgba(0, 0, 0, 0.25);
+        background: rgba(255, 255, 255, 0.1);
+      }
+
+      .contact-icon {
+        width: 46px;
+        height: 46px;
+        border-radius: 50%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(0, 0, 0, 0.15);
+        box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
+        position: relative;
+        overflow: hidden;
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+      }
+
+      .contact-card:hover .contact-icon {
+        transform: scale(1.06);
+        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.3);
+      }
+
+      .contact-icon i {
+        font-size: 1.25rem;
+      }
+
+      .contact-icon.whatsapp i {
+        color: #25d366;
+      }
+      .contact-icon.phone i {
+        color: #20c997;
+      }
+
+      /* Pulse + glow on hover */
+      .contact-card:hover .contact-icon::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: 50%;
+        box-shadow: 0 0 0 0 rgba(32, 201, 151, 0.6);
+        animation: pulseGlow 1.2s ease-out infinite;
+      }
+
+      @keyframes pulseGlow {
+        0% {
+          box-shadow: 0 0 0 0 rgba(32, 201, 151, 0.6);
+        }
+        70% {
+          box-shadow: 0 0 0 14px rgba(32, 201, 151, 0);
+        }
+        100% {
+          box-shadow: 0 0 0 0 rgba(32, 201, 151, 0);
+        }
+      }
+
+      .contact-label {
+        font-weight: 700;
+        color: #ffffff;
+      }
+      .contact-number {
+        font-weight: 800;
+        color: #cfe3ff;
+      }
+
+      .quick-links {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: grid;
+        gap: 10px;
+      }
+      .quick-links a {
+        color: #cfe3ff;
+        text-decoration: none;
+        transition: color 0.2s ease, transform 0.2s ease;
+      }
+      .quick-links a:hover {
+        color: #20c997;
+        transform: translateX(-4px);
+      }
+
+      .contact-desc {
+        color: #dbe8ff;
+        line-height: 1.8;
+        margin: 0;
+      }
+
+      /* Reveal on scroll */
+      .reveal {
+        opacity: 0;
+        transform: translateY(14px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+      }
+      .reveal.revealed {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Back-to-top floating button */
+      .back-to-top {
+        position: fixed;
+        bottom: 22px;
+        right: 22px;
+        width: 46px;
+        height: 46px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #198754 0%, #20c997 100%);
+        color: #ffffff;
+        border: none;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 10px 24px rgba(25, 135, 84, 0.35);
+        cursor: pointer;
+        z-index: 999;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(12px);
+        transition: opacity 0.25s ease, transform 0.25s ease,
+          box-shadow 0.2s ease;
+      }
+
+      .back-to-top.show {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+
+      .back-to-top:hover {
+        box-shadow: 0 0 0 0 rgba(32, 201, 151, 0.7);
+        animation: backTopGlow 1.1s ease-out infinite;
+      }
+
+      .back-to-top i {
+        font-size: 1.1rem;
+      }
+
+      @keyframes backTopGlow {
+        0% {
+          box-shadow: 0 0 0 0 rgba(32, 201, 151, 0.6);
+        }
+        70% {
+          box-shadow: 0 0 0 14px rgba(32, 201, 151, 0);
+        }
+        100% {
+          box-shadow: 0 0 0 0 rgba(32, 201, 151, 0);
+        }
+      }
+
+      /* Testimonials slider styles */
+      #testimonials .testimonials-slider {
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      #testimonials .ts-viewport {
+        overflow: hidden;
+        width: 100%;
+      }
+
+      #testimonials .ts-track {
+        display: grid;
+        grid-auto-flow: column;
+        grid-auto-columns: 100%;
+        gap: 16px;
+        transition: transform 0.6s ease;
+        will-change: transform;
+      }
+
+      /* Cards */
+      #testimonials .ts-card {
+        height: 100%;
+      }
+
+      #testimonials .ts-card-inner {
+        background: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+        padding: 18px;
+        height: 100%;
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+      }
+
+      #testimonials .ts-card-inner:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 14px 30px rgba(0, 0, 0, 0.12);
+      }
+
+      #testimonials .ts-header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 12px;
+      }
+
+      #testimonials .ts-avatar {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+
+      #testimonials .ts-name {
+        font-weight: 700;
+      }
+
+      #testimonials .ts-stars {
+        color: #f59e0b; /* amber */
+        letter-spacing: 2px;
+        font-size: 0.95rem;
+        display: inline-flex;
+        gap: 2px;
+      }
+
+      #testimonials .ts-text {
+        color: #495057;
+        margin: 0;
+        line-height: 1.7;
+      }
+
+      /* Arrows */
+      #testimonials .ts-arrow {
+        background: #f8f7f3;
+        border: 1px solid #e2e2e2;
+        color: #212529;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: background 0.2s ease, transform 0.2s ease,
+          box-shadow 0.2s ease;
+      }
+
+      #testimonials .ts-arrow:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+      }
+
+      /* Responsive columns: 1 on mobile, 2 on md, 3 on lg */
+      @media (min-width: 576px) {
+        #testimonials .ts-track {
+          grid-auto-columns: calc(50% - 8px);
+        }
+      }
+
+      @media (min-width: 992px) {
+        #testimonials .ts-track {
+          grid-auto-columns: calc(33.333% - 10.67px);
+        }
+      }
+
+      /* Center navbar collapse content and style nav links */
+      #mainNav .navbar-collapse {
+        justify-content: center;
+      }
+
+      #mainNav .navbar-nav {
+        margin: 0 auto;
+        gap: 20px;
+      }
+
+      #mainNav .navbar-nav .nav-link {
+        color: #198754 !important; /* green */
+        font-weight: 800;
+        font-size: 1.05rem;
+        padding: 0.5rem 0.85rem;
+      }
+
+      #mainNav .navbar-nav .nav-link:hover,
+      #mainNav .navbar-nav .nav-link:focus,
+      #mainNav .navbar-nav .nav-link.active {
+        color: #20c997 !important; /* teal */
+      }
+    </style>
+  </head>
+  <body id="page-top" dir="rtl">
+    <!-- Navigation-->
+    <nav
+      class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top"
+      id="mainNav"
+    >
+      <div class="container">
+        <a class="navbar-brand" href="#page-top">
+          <img
+            src="subfasts-store/subfasts-logo.avif"
+            alt="subfasts"
+            style="height: 40px"
+          />
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarResponsive"
+          aria-controls="navbarResponsive"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          القائمة
+          <i class="fas fa-bars ms-1"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="#services">الخدمات</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#pricing">الأسعار</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#contact">تواصل</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- Masthead-->
+    <header class="masthead mt-6">
+      <div class="container">
+        <!-- <div class="masthead-subheading">Welcome to subfasts!</div>
+        <div class="masthead-heading text-uppercase">Premium Subscription Services</div>
+        <a class="btn btn-primary btn-xl text-uppercase" href="#services">Get Started</a> -->
+      </div>
+    </header>
+    <!-- Services-->
+    <section class="page-section" id="services">
+      <div class="container">
+        <div class="text-center">
+          <h2 class="section-heading text-uppercase">خدماتنا</h2>
+          <h3 class="section-subheading text-muted">
+            اشتراكات منصات البث بأسعار لا تُنافس
+          </h3>
+        </div>
+        <div class="row text-center">
+          <!-- Updated service items with circular icons and click functionality -->
+          <div class="col-md-6">
+            <div class="service-item" onclick="showNetflixPricing()">
+              <div class="service-icon">
+                <img
+                  src="subfasts-store/assets/img/netflix logo.png"
+                  alt=""
+                  srcset=""
+                />
+              </div>
+              <h4 class="my-3">اشتراكات نتفلكس</h4>
+              <p class="text-muted">
+                احصل على نتفلكس بحسابات خاصة أو مشتركة مع خيارات مدة متعددة
+                تناسب ميزانيتك واحتياجك.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="service-item" onclick="showShahidPricing()">
+              <div class="service-icon">
+                <img
+                  src="subfasts-store/assets/img/Shahid VIP logo.webp"
+                  alt=""
+                  srcset=""
+                />
+              </div>
+              <h4 class="my-3">شاهد VIP</h4>
+              <p class="text-muted">
+                استمتع بمحتوى عربي مميز مع اشتراكات شاهد VIP وخيارات مدة متعددة
+                للحسابات المشتركة.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="page-section bg-light" id="pricing">
+      <div class="container">
+        <div class="text-center">
+          <h2 class="section-heading text-uppercase">الباقات والأسعار</h2>
+          <h3 class="section-subheading text-muted">
+            اختر الخطة المناسبة لاحتياجاتك الترفيهية
+          </h3>
+        </div>
+
+        <!-- Added service selector buttons -->
+        <div class="service-selector">
+          <button class="service-btn active" onclick="showNetflixPricing()">
+            <img
+              src="subfasts-store/assets/img/netflix logo.png"
+              alt="نتفلكس"
+            />
+            اشتراكات نتفلكس
+          </button>
+          <button class="service-btn" onclick="showShahidPricing()">
+            <img
+              src="subfasts-store/assets/img/Shahid VIP logo.webp"
+              alt="شاهد VIP"
+            />
+            اشتراكات شاهد VIP
+          </button>
+        </div>
+
+        <!-- Netflix Pricing with flipping cards -->
+        <div class="pricing-section active" id="netflix-pricing">
+          <div class="row mb-5">
+            <div class="col-12">
+              <h3 class="text-center mb-4 text-primary">اشتراكات نتفلكس</h3>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4">
+              <div class="flip-card">
+                <div class="flip-card-inner">
+                  <div class="flip-card-front">
+                    <div class="card h-100 shadow">
+                      <div
+                        class="card-header bg-primary text-white text-center"
+                      >
+                        <h4>حساب خاص</h4>
+                        <p class="mb-0">ببريدك الإلكتروني</p>
+                      </div>
+                      <div class="card-body text-center">
+                        <h2 class="text-primary">85 ر.س</h2>
+                        <p class="text-muted">اضغط لعرض التفاصيل</p>
+                        <button class="btn btn-primary btn-block">
+                          اطلب الآن
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="flip-card-back">
+                    <h4>تفاصيل الحساب الخاص</h4>
+                    <ul class="features">
+                      <li>✓ حساب خاص</li>
+                      <li>✓ بريدك الإلكتروني</li>
+                      <li>✓ 5 ملفات شخصية</li>
+                      <li>✓ غير مشترك</li>
+                      <li>✓ جودة Full HD و4K</li>
+                      <li>✓ تحميل للمشاهدة دون اتصال</li>
+                    </ul>
+                    <button class="btn btn-primary">اطلب الآن</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4">
+              <div class="flip-card">
+                <div class="flip-card-inner">
+                  <div class="flip-card-front">
+                    <div class="card h-100 shadow">
+                      <div
+                        class="card-header bg-success text-white text-center"
+                      >
+                        <h4>3 أشهر</h4>
+                        <p class="mb-0">حساب مشترك</p>
+                      </div>
+                      <div class="card-body text-center">
+                        <h2 class="text-success">20 ر.س</h2>
+                        <p class="text-muted">اضغط لعرض التفاصيل</p>
+                        <button class="btn btn-success btn-block">
+                          اطلب الآن
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="flip-card-back">
+                    <h4>تفاصيل 3 أشهر</h4>
+                    <ul class="features">
+                      <li>✓ مدة 3 أشهر</li>
+                      <li>✓ حساب مشترك</li>
+                      <li>✓ جودة Full HD</li>
+                      <li>✓ تفعيل فوري</li>
+                      <li>✓ دعم 24/7</li>
+                      <li>✓ ضمان استبدال</li>
+                    </ul>
+                    <button class="btn btn-success">اطلب الآن</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4">
+              <div class="flip-card">
+                <div class="flip-card-inner">
+                  <div class="flip-card-front">
+                    <div class="card h-100 shadow">
+                      <div class="card-header bg-info text-white text-center">
+                        <h4>6 أشهر</h4>
+                        <p class="mb-0">حساب مشترك</p>
+                      </div>
+                      <div class="card-body text-center">
+                        <h2 class="text-info">34 ر.س</h2>
+                        <p class="text-muted">اضغط لعرض التفاصيل</p>
+                        <button class="btn btn-info btn-block">
+                          Order Now
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="flip-card-back">
+                    <h4>تفاصيل 6 أشهر</h4>
+                    <ul class="features">
+                      <li>✓ مدة 6 أشهر</li>
+                      <li>✓ حساب مشترك</li>
+                      <li>✓ جودة Full HD</li>
+                      <li>✓ أفضل قيمة</li>
+                      <li>✓ دعم أولوية</li>
+                      <li>✓ استبدال مجاني</li>
+                    </ul>
+                    <button class="btn btn-info">Order Now</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4">
+              <div class="flip-card">
+                <div class="flip-card-inner">
+                  <div class="flip-card-front">
+                    <div class="card h-100 shadow">
+                      <div
+                        class="card-header bg-warning text-white text-center"
+                      >
+                        <h4>سنة</h4>
+                        <p class="mb-0">حساب مشترك</p>
+                      </div>
+                      <div class="card-body text-center">
+                        <h2 class="text-warning">50 ر.س</h2>
+                        <p class="text-muted">اضغط لعرض التفاصيل</p>
+                        <button class="btn btn-warning btn-block">
+                          Order Now
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="flip-card-back">
+                    <h4>تفاصيل سنة</h4>
+                    <ul class="features">
+                      <li>✓ مدة 12 شهر</li>
+                      <li>✓ حساب مشترك</li>
+                      <li>✓ جودة Full HD</li>
+                      <li>✓ توفير أقصى</li>
+                      <li>✓ دعم VIP</li>
+                      <li>✓ ضمان مدى الحياة</li>
+                    </ul>
+                    <button class="btn btn-warning">اطلب الآن</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Shahid VIP Pricing with flipping cards -->
+        <div class="pricing-section" id="shahid-pricing">
+          <div class="row">
+            <div class="col-12">
+              <h3 class="text-center mb-4 text-primary">اشتراكات شاهد VIP</h3>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4">
+              <div class="flip-card">
+                <div class="flip-card-inner">
+                  <div class="flip-card-front">
+                    <div class="card h-100 shadow">
+                      <div
+                        class="card-header bg-primary text-white text-center"
+                      >
+                        <h4>حساب خاص</h4>
+                        <p class="mb-0">بياناتك الخاصة</p>
+                      </div>
+                      <div class="card-body text-center">
+                        <h2 class="text-primary">80 ر.س</h2>
+                        <p class="text-muted">اضغط لعرض التفاصيل</p>
+                        <button class="btn btn-primary btn-block">
+                          Order Now
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="flip-card-back">
+                    <h4>تفاصيل الحساب الخاص</h4>
+                    <ul class="features">
+                      <li>✓ حساب خاص</li>
+                      <li>✓ بيانات خاصة بك</li>
+                      <li>✓ محتوى عربي مميز</li>
+                      <li>✓ غير مشترك</li>
+                      <li>✓ تجربة بلا إعلانات</li>
+                      <li>✓ تحميل المحتوى</li>
+                    </ul>
+                    <button class="btn btn-primary">اطلب الآن</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4">
+              <div class="flip-card">
+                <div class="flip-card-inner">
+                  <div class="flip-card-front">
+                    <div class="card h-100 shadow">
+                      <div
+                        class="card-header bg-success text-white text-center"
+                      >
+                        <h4>3 أشهر</h4>
+                        <p class="mb-0">حساب مشترك</p>
+                      </div>
+                      <div class="card-body text-center">
+                        <h2 class="text-success">18 ر.س</h2>
+                        <p class="text-muted">اضغط لعرض التفاصيل</p>
+                        <button class="btn btn-success btn-block">
+                          Order Now
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="flip-card-back">
+                    <h4>تفاصيل 3 أشهر</h4>
+                    <ul class="features">
+                      <li>✓ مدة 3 أشهر</li>
+                      <li>✓ حساب مشترك</li>
+                      <li>✓ محتوى عربي مميز</li>
+                      <li>✓ مشاهدة بدون إعلانات</li>
+                      <li>✓ تفعيل فوري</li>
+                      <li>✓ دعم عملاء</li>
+                    </ul>
+                    <button class="btn btn-success">اطلب الآن</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4">
+              <div class="flip-card">
+                <div class="flip-card-inner">
+                  <div class="flip-card-front">
+                    <div class="card h-100 shadow">
+                      <div class="card-header bg-info text-white text-center">
+                        <h4>6 أشهر</h4>
+                        <p class="mb-0">حساب مشترك</p>
+                      </div>
+                      <div class="card-body text-center">
+                        <h2 class="text-info">28 ر.س</h2>
+                        <p class="text-muted">اضغط لعرض التفاصيل</p>
+                        <button class="btn btn-info btn-block">
+                          Order Now
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="flip-card-back">
+                    <h4>تفاصيل 6 أشهر</h4>
+                    <ul class="features">
+                      <li>✓ مدة 6 أشهر</li>
+                      <li>✓ حساب مشترك</li>
+                      <li>✓ محتوى عربي مميز</li>
+                      <li>✓ أفضل قيمة</li>
+                      <li>✓ دعم أولوية</li>
+                      <li>✓ حماية الحساب</li>
+                    </ul>
+                    <button class="btn btn-info">Order Now</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4">
+              <div class="flip-card">
+                <div class="flip-card-inner">
+                  <div class="flip-card-front">
+                    <div class="card h-100 shadow">
+                      <div
+                        class="card-header bg-warning text-white text-center"
+                      >
+                        <h4>سنة</h4>
+                        <p class="mb-0">حساب مشترك</p>
+                      </div>
+                      <div class="card-body text-center">
+                        <h2 class="text-warning">40 ر.س</h2>
+                        <p class="text-muted">اضغط لعرض التفاصيل</p>
+                        <button class="btn btn-warning btn-block">
+                          Order Now
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="flip-card-back">
+                    <h4>تفاصيل سنة</h4>
+                    <ul class="features">
+                      <li>✓ مدة 12 شهر</li>
+                      <li>✓ حساب مشترك</li>
+                      <li>✓ محتوى عربي مميز</li>
+                      <li>✓ توفير أقصى</li>
+                      <li>✓ دعم VIP</li>
+                      <li>✓ ضمان ممتد</li>
+                    </ul>
+                    <button class="btn btn-warning">اطلب الآن</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About-->
+
+    <!-- Team-->
+
+    <!-- Clients-->
+
+    <!-- Testimonials -->
+    <section class="page-section" id="testimonials">
+      <div class="container">
+        <div class="text-center mb-4">
+          <h2 class="section-heading text-uppercase">تقييمات العملاء</h2>
+        </div>
+
+        <div class="testimonials-slider">
+          <button class="ts-arrow ts-prev" aria-label="السابق">&#10094;</button>
+          <div class="ts-viewport">
+            <div class="ts-track">
+              <!-- Card 1 -->
+              <div class="ts-card">
+                <div class="ts-card-inner">
+                  <div class="ts-header">
+                    <img
+                      src="subfasts-store/assets/img/Clientes/CM1.webp"
+                      alt="عميل"
+                      class="ts-avatar"
+                    />
+                    <div class="ts-meta">
+                      <div class="ts-name">عبدالرحمن – الدمام</div>
+                      <div class="ts-stars" aria-label="5 من 5">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="ts-text">
+                    جربت أكثر من شهرين، SUB FASTS هو الأفضل، سريع وآمن وخدمتهم
+                    ممتازة.
+                  </p>
+                </div>
+              </div>
+              <!-- Card 2 -->
+              <div class="ts-card">
+                <div class="ts-card-inner">
+                  <div class="ts-header">
+                    <img
+                      src="subfasts-store/assets/img/Clientes/CF1.webp"
+                      alt="عميل"
+                      class="ts-avatar"
+                    />
+                    <div class="ts-meta">
+                      <div class="ts-name">ريم – الخبر</div>
+                      <div class="ts-stars" aria-label="4.5 من 5">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-stroke"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="ts-text">
+                    طلبت وانقبل خلال ربع ساعة، الدعم سريع وخيارات كثيرة. الصراحة
+                    ممتاز.
+                  </p>
+                </div>
+              </div>
+              <!-- Card 3 -->
+              <div class="ts-card">
+                <div class="ts-card-inner">
+                  <div class="ts-header">
+                    <img
+                      src="subfasts-store/assets/img/Clientes/CF2.webp"
+                      alt="عميل"
+                      class="ts-avatar"
+                    />
+                    <div class="ts-meta">
+                      <div class="ts-name">لولـوة – مكة المكرمة</div>
+                      <div class="ts-stars" aria-label="4 من 5">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="ts-text">
+                    الاشتراك والاشتغال كان سريع جداً، تفعيل في دقائق وخدمة
+                    محترفة.
+                  </p>
+                </div>
+              </div>
+              <!-- Card 4 -->
+              <div class="ts-card">
+                <div class="ts-card-inner">
+                  <div class="ts-header">
+                    <img
+                      src="subfasts-store/assets/img/Clientes/CF3.webp"
+                      alt="عميل"
+                      class="ts-avatar"
+                    />
+                    <div class="ts-meta">
+                      <div class="ts-name">أم فيصل – جدة</div>
+                      <div class="ts-stars" aria-label="4.5 من 5">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-stroke"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="ts-text">
+                    سرعة ما توقعتها، اشتركت واشتغل خلال أقل من 10 دقائق. أنصح
+                    بهم بقوة.
+                  </p>
+                </div>
+              </div>
+              <!-- Card 5 -->
+              <div class="ts-card">
+                <div class="ts-card-inner">
+                  <div class="ts-header">
+                    <img
+                      src="subfasts-store/assets/img/portfolio/2.jpg"
+                      alt="عميل"
+                      class="ts-avatar"
+                    />
+                    <div class="ts-meta">
+                      <div class="ts-name">فهد – الرياض</div>
+                      <div class="ts-stars" aria-label="5 من 5">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="ts-text">
+                    خدمة عملاء محترمة جداً وأسعار مناسبة، أكيد بكرر التجربة.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button class="ts-arrow ts-next" aria-label="التالي">&#10095;</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact / Footer CTA -->
+    <section class="page-section contact-cta" id="contact">
+      <div class="container">
+        <div class="contact-grid">
+          <!-- Column 1: contact -->
+          <div class="contact-col reveal">
+            <h3 class="contact-title">تواصل معنا</h3>
+            <div class="contact-cards">
+              <a
+                class="contact-card"
+                href="https://wa.me/966549245889"
+                target="_blank"
+                rel="noopener"
+              >
+                <div class="contact-icon whatsapp">
+                  <i class="fab fa-whatsapp"></i>
+                </div>
+                <div class="contact-info">
+                  <div class="contact-label">واتساب</div>
+                  <div class="contact-number">+966 54 924 5589</div>
+                </div>
+              </a>
+              <a class="contact-card" href="tel:+966549245889">
+                <div class="contact-icon phone">
+                  <i class="fas fa-phone"></i>
+                </div>
+                <div class="contact-info">
+                  <div class="contact-label">اتصال مباشر</div>
+                  <div class="contact-number">+966 54 924 5589</div>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <!-- Column 2: روابط سريعة -->
+          <div class="contact-col reveal">
+            <h3 class="contact-title">روابط سريعة</h3>
+            <ul class="quick-links">
+              <li><a href="#netflix-pricing">اشتراكات نتفلكس</a></li>
+              <li><a href="#shahid-pricing">اشتراكات شاهد VIP</a></li>
+              <li><a href="#pricing">الباقات والأسعار</a></li>
+              <li><a href="#contact">تواصل معنا</a></li>
+            </ul>
+          </div>
+
+          <!-- Column 3: SubFasts -->
+          <div class="contact-col reveal">
+            <h3 class="contact-title">SubFasts Store</h3>
+            <p class="contact-desc">
+              كل اشتراكاتك في مكان واحد – نتفلكس، شاهد VIP والمزيد.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Footer-->
+    <footer class="footer py-4">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-4 text-lg-start">
+            <p>
+              All rights reserved &copy; 2025
+              <span style="font-weight: bold">Alfarouk Aljowaily</span>
+              for
+              <span style="color: #00ce29; font-weight: bold">SubFasts</span>
+              | <a href="#" style="color: #fff; text-decoration: none;
+              font-weight: bold" onmouseover="this.style.color='#1dd1a1'"
+              onmouseout="this.style.color='#fff'"
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Floating Back To Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="العودة للأعلى">
+      <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="js/scripts.js"></script>
+    <!-- Added JavaScript for service navigation and card interactions -->
+    <script>
+      // Function to show Netflix pricing
+      function showNetflixPricing() {
+        // Hide all pricing sections
+        document.querySelectorAll(".pricing-section").forEach((section) => {
+          section.classList.remove("active");
+        });
+
+        // Show Netflix pricing
+        document.getElementById("netflix-pricing").classList.add("active");
+
+        // Update button states
+        document.querySelectorAll(".service-btn").forEach((btn) => {
+          btn.classList.remove("active");
+        });
+        document
+          .querySelector('.service-btn[onclick="showNetflixPricing()"]')
+          .classList.add("active");
+
+        // Smooth scroll to pricing section
+        document
+          .getElementById("pricing")
+          .scrollIntoView({ behavior: "smooth" });
+      }
+
+      // Function to show Shahid VIP pricing
+      function showShahidPricing() {
+        // Hide all pricing sections
+        document.querySelectorAll(".pricing-section").forEach((section) => {
+          section.classList.remove("active");
+        });
+
+        // Show Shahid pricing
+        document.getElementById("shahid-pricing").classList.add("active");
+
+        // Update button states
+        document.querySelectorAll(".service-btn").forEach((btn) => {
+          btn.classList.remove("active");
+        });
+        document
+          .querySelector('.service-btn[onclick="showShahidPricing()"]')
+          .classList.add("active");
+
+        // Smooth scroll to pricing section
+        document
+          .getElementById("pricing")
+          .scrollIntoView({ behavior: "smooth" });
+      }
+
+      // Flip on hover or click; reset on mouse leave or outside click
+      const flipCards = document.querySelectorAll(".flip-card");
+      flipCards.forEach((card) => {
+        card.addEventListener("click", function (event) {
+          event.stopPropagation();
+          flipCards.forEach((c) => c.classList.remove("flipped"));
+          this.classList.add("flipped");
+        });
+
+        card.addEventListener("mouseleave", function () {
+          this.classList.remove("flipped");
+        });
+      });
+
+      document.addEventListener("click", function () {
+        flipCards.forEach((c) => c.classList.remove("flipped"));
+      });
+
+      // Testimonials slider JS (RTL-aware)
+      (function () {
+        const viewport = document.querySelector("#testimonials .ts-viewport");
+        if (!viewport) return;
+        const track = viewport.querySelector(".ts-track");
+        const prevBtn = document.querySelector("#testimonials .ts-prev");
+        const nextBtn = document.querySelector("#testimonials .ts-next");
+        const cards = Array.from(track.children);
+
+        let index = 0;
+        let autoplayTimer;
+
+        function getStep() {
+          // how many cards are visible -> step by that count
+          const style = window.getComputedStyle(track);
+          const columnWidth =
+            track.getBoundingClientRect().width /
+            (parseFloat(style.gridAutoColumns) ? 1 : 1);
+          // Fallback to 1 card if calc not resolvable
+          return window.innerWidth >= 992
+            ? 3
+            : window.innerWidth >= 576
+            ? 2
+            : 1;
+        }
+
+        function update() {
+          const visible = getStep();
+          const cardWidth = cards[0].getBoundingClientRect().width + 16; // include gap
+          const dirRtl = document.documentElement.dir === "rtl";
+          const offset = index * cardWidth;
+          track.style.transform = `translateX(${dirRtl ? offset : -offset}px)`;
+        }
+
+        function clampIndex() {
+          const visible = getStep();
+          const maxIndex = Math.max(0, cards.length - visible);
+          if (index > maxIndex) index = 0;
+          if (index < 0) index = maxIndex;
+        }
+
+        function next() {
+          index += 1;
+          clampIndex();
+          update();
+        }
+
+        function prev() {
+          index -= 1;
+          clampIndex();
+          update();
+        }
+
+        function startAutoplay() {
+          stopAutoplay();
+          autoplayTimer = setInterval(next, 3000);
+        }
+
+        function stopAutoplay() {
+          if (autoplayTimer) clearInterval(autoplayTimer);
+        }
+
+        nextBtn.addEventListener("click", () => {
+          (document.documentElement.dir === "rtl" ? prev : next)();
+        });
+        prevBtn.addEventListener("click", () => {
+          (document.documentElement.dir === "rtl" ? next : prev)();
+        });
+
+        viewport.addEventListener("mouseenter", stopAutoplay);
+        viewport.addEventListener("mouseleave", startAutoplay);
+        window.addEventListener("resize", () => {
+          clampIndex();
+          update();
+        });
+
+        // Initial
+        update();
+        startAutoplay();
+      })();
+
+      // Reveal on scroll for contact columns
+      (function () {
+        const items = document.querySelectorAll(".contact-cta .reveal");
+        if (!items.length) return;
+        const io = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("revealed");
+                io.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.15 }
+        );
+        items.forEach((el) => io.observe(el));
+      })();
+
+      // Back to top logic
+      (function () {
+        const btn = document.getElementById("backToTop");
+        if (!btn) return;
+        const toggle = () => {
+          if (window.scrollY > 300) btn.classList.add("show");
+          else btn.classList.remove("show");
+        };
+        window.addEventListener("scroll", toggle, { passive: true });
+        toggle();
+        btn.addEventListener("click", () => {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+      })();
+    </script>
+
+    <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+  </body>
+</html>
