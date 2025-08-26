@@ -29,8 +29,219 @@
     />
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="css/styles.css" rel="stylesheet" />
-    <!-- Custom styles for circular images, flipping cards, and smooth animations -->
+    <!-- Custom styles for circular images, flipping cards, smooth animations, scrolling bar and countdown timer -->
     <style>
+      /* Promotion Bar and Countdown Timer Styles */
+      .promotion-section {
+        padding: 20px 0;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .promotion-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(135deg, #ff5252, #ff8a80, #64b5f6, #81c784);
+        background-size: 400% 400%;
+        animation: gradientAnimation 15s ease infinite;
+        z-index: -1;
+      }
+
+      @keyframes gradientAnimation {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+
+      .promotion-bar {
+        background-color: rgba(0, 0, 0, 0.2);
+        border-radius: 8px;
+        padding: 15px;
+        margin-bottom: 20px;
+        overflow: hidden;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(5px);
+      }
+
+      .scrolling-text {
+        white-space: nowrap;
+        padding: 5px 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .scrolling-text p {
+        display: inline-block;
+        color: #ffffff;
+        font-size: 1.2rem;
+        font-weight: bold;
+        margin: 0;
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.8),
+          0 0 20px rgba(255, 255, 255, 0.5), 0 0 30px rgba(255, 215, 0, 0.5);
+        animation: glowText 3s ease-in-out infinite alternate;
+      }
+
+      @keyframes glowText {
+        0% {
+          text-shadow: 0 0 10px rgba(255, 255, 255, 0.8),
+            0 0 20px rgba(255, 255, 255, 0.5), 0 0 30px rgba(255, 215, 0, 0.5);
+        }
+        100% {
+          text-shadow: 0 0 15px rgba(255, 255, 255, 0.9),
+            0 0 25px rgba(255, 255, 255, 0.6), 0 0 35px rgba(255, 215, 0, 0.7),
+            0 0 45px rgba(255, 215, 0, 0.4);
+        }
+      }
+
+      .countdown-container {
+        display: flex;
+        justify-content: center;
+        margin: 20px 0;
+      }
+
+      .countdown-timer {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(0, 0, 0, 0.3);
+        border-radius: 15px;
+        padding: 20px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(8px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        max-width: 650px;
+        width: 100%;
+        margin: 0 auto;
+      }
+
+      .countdown-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0 10px;
+        position: relative;
+        padding: 5px;
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.05);
+        box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease;
+      }
+
+      .countdown-item:hover {
+        transform: translateY(-5px);
+      }
+
+      .countdown-item span:first-child {
+        font-size: 2.5rem;
+        font-weight: bold;
+        color: #ffffff;
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        background: linear-gradient(135deg, #ff5252, #ff8a80);
+        border-radius: 10px;
+        padding: 10px 15px;
+        min-width: 60px;
+        text-align: center;
+        box-shadow: 0 5px 15px rgba(255, 87, 34, 0.3);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .countdown-item span:first-child::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.2),
+          rgba(255, 255, 255, 0)
+        );
+        z-index: 1;
+      }
+
+      .countdown-item span:first-child:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(255, 87, 34, 0.4);
+      }
+
+      .countdown-label {
+        font-size: 1rem;
+        color: #ffffff;
+        margin-top: 8px;
+        font-weight: 500;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+      }
+
+      .countdown-separator {
+        font-size: 2rem;
+        font-weight: bold;
+        color: rgba(255, 255, 255, 0.8);
+        margin: 0 5px;
+        padding-bottom: 25px;
+        animation: pulseSeparator 1s infinite alternate;
+      }
+
+      @keyframes pulseSeparator {
+        0% {
+          opacity: 0.7;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+
+      /* Responsive styles for countdown timer */
+      @media (max-width: 768px) {
+        .countdown-item span:first-child {
+          font-size: 1.8rem;
+          min-width: 45px;
+          padding: 8px 12px;
+        }
+
+        .countdown-separator {
+          font-size: 1.5rem;
+        }
+
+        .countdown-label {
+          font-size: 0.8rem;
+        }
+      }
+
+      @media (max-width: 576px) {
+        .countdown-item span:first-child {
+          font-size: 1.5rem;
+          min-width: 40px;
+          padding: 6px 10px;
+        }
+
+        .countdown-separator {
+          font-size: 1.2rem;
+          margin: 0 2px;
+        }
+
+        .countdown-label {
+          font-size: 0.7rem;
+        }
+
+        .scrolling-text p {
+          font-size: 1rem;
+        }
+      }
+
       /* Circular service images with spacing */
       .service-icon {
         width: 120px;
@@ -70,7 +281,7 @@
         width: 100%;
         height: 100%;
         object-fit: cover; /* عشان تملأ الدائرة من غير ما تتمدد غلط */
-        border-radius: 50%; /* يخلي الصورة نفسها دائرية */
+        border-radius: 50%;
       }
 
       /* Flipping card styles */
@@ -879,13 +1090,7 @@
       id="mainNav"
     >
       <div class="container">
-        <a class="navbar-brand" href="#page-top">
-          <img
-            src="subfasts-store/subfasts-logo.avif"
-            alt="subfasts"
-            style="height: 40px"
-          />
-        </a>
+        <a class="navbar-brand" href="#page-top">سَبفاستس</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -893,13 +1098,12 @@
           data-bs-target="#navbarResponsive"
           aria-controls="navbarResponsive"
           aria-expanded="false"
-          aria-label="Toggle navigation"
+          aria-label="تبديل القائمة"
         >
-          القائمة
-          <i class="fas fa-bars ms-1"></i>
+          <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
+          <ul class="navbar-nav ms-auto">
             <li class="nav-item">
               <a class="nav-link" href="#services">الخدمات</a>
             </li>
@@ -907,7 +1111,13 @@
               <a class="nav-link" href="#pricing">الأسعار</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#contact">تواصل</a>
+              <a class="nav-link" href="#promotion">العروض</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#testimonials">آراء العملاء</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#contact">تواصل معنا</a>
             </li>
           </ul>
         </div>
@@ -1020,7 +1230,12 @@
                     <li>✓ جودة Full HD و4K</li>
                     <li>✓ تحميل للمشاهدة دون اتصال</li>
                   </ul>
-                  <button class="btn btn-primary">اطلب الآن</button>
+                  <a
+                    href="https://subfasts.com/products/%D8%A7%D8%B4%D8%AA%D8%B1%D8%A7%D9%83-%D9%86%D8%AA%D9%81%D9%84%D9%83%D8%B3-%D8%AD%D8%B3%D8%A7%D8%A8-%D8%A8%D8%A7%D9%8A%D9%85%D9%8A%D9%84%D9%83-%D8%A7%D9%84%D8%AE%D8%A7%D8%B5-%D8%AE%D8%A7%D8%B5-%D8%BA%D9%8A%D8%B1-%D9%85%D8%B4%D8%AA%D8%B1%D9%83-%D9%A5-%D8%A8%D8%B1%D9%88%D9%81%D8%A7%D9%8A%D9%84"
+                    class="btn btn-primary"
+                    role="button"
+                    >اطلب الآن</a
+                  >
                 </div>
               </div>
             </div>
@@ -1038,7 +1253,12 @@
                     <li>✓ تفعيل فوري</li>
                     <li>✓ دعم 24/7</li>
                   </ul>
-                  <button class="btn btn-success">اطلب الآن</button>
+                  <a
+                    href="https://subfasts.com/products/%D8%A7%D8%B4%D8%AA%D8%B1%D8%A7%D9%83-%D9%86%D8%AA%D9%81%D9%84%D9%83%D8%B3-%D8%AD%D8%B3%D8%A7%D8%A8-%D8%A8%D8%A7%D9%8A%D9%85%D9%8A%D9%84%D9%83-%D8%A7%D9%84%D8%AE%D8%A7%D8%B5-3-%D8%B4%D9%87%D9%88%D8%B1-%D9%85%D8%B4%D8%AA%D8%B1%D9%83"
+                    class="btn btn-success"
+                    role="button"
+                    >اطلب الآن</a
+                  >
                 </div>
               </div>
             </div>
@@ -1056,7 +1276,12 @@
                     <li>✓ دعم أولوية</li>
                     <li>✓ أفضل قيمة</li>
                   </ul>
-                  <button class="btn btn-info">اطلب الآن</button>
+                  <a
+                    href="https://subfasts.com/products/%D8%A7%D8%B4%D8%AA%D8%B1%D8%A7%D9%83-%D9%86%D8%AA%D9%81%D9%84%D9%83%D8%B3-%D8%AD%D8%B3%D8%A7%D8%A8-%D8%A8%D8%A7%D9%8A%D9%85%D9%8A%D9%84%D9%83-%D8%A7%D9%84%D8%AE%D8%A7%D8%B5-%D9%A6-%D8%B4%D9%87%D9%88%D8%B1-%D9%85%D8%B4%D8%AA%D8%B1%D9%83"
+                    class="btn btn-info"
+                    role="button"
+                    >اطلب الآن</a
+                  >
                 </div>
               </div>
             </div>
@@ -1074,7 +1299,12 @@
                     <li>✓ دعم VIP</li>
                     <li>✓ ضمان مدى الحياة</li>
                   </ul>
-                  <button class="btn btn-warning">اطلب الآن</button>
+                  <a
+                    href="https://subfasts.com/products/%D8%A7%D8%B4%D8%AA%D8%B1%D8%A7%D9%83-%D9%86%D8%AA%D9%81%D9%84%D9%83%D8%B3-%D8%AD%D8%B3%D8%A7%D8%A8-%D8%A8%D8%A7%D9%8A%D9%85%D9%8A%D9%84%D9%83-%D8%A7%D9%84%D8%AE%D8%A7%D8%B5-%D8%B3%D9%86%D9%87-%D9%85%D8%B4%D8%AA%D8%B1%D9%83"
+                    class="btn btn-warning"
+                    role="button"
+                    >اطلب الآن</a
+                  >
                 </div>
               </div>
             </div>
@@ -1098,14 +1328,19 @@
                   <p class="subtitle">بياناتك الخاصة</p>
                 </div>
                 <div class="card-body">
-                  <div class="price">80 ر.س</div>
+                  <div class="price">85 ر.س</div>
                   <ul class="features">
                     <li>✓ حساب خاص</li>
                     <li>✓ محتوى عربي مميز</li>
                     <li>✓ تحميل المحتوى</li>
                     <li>✓ تجربة بلا إعلانات</li>
                   </ul>
-                  <button class="btn btn-primary">اطلب الآن</button>
+                  <a
+                    href="https://subfasts.com/products/shahid-vip-%D8%B4%D8%A7%D9%87%D8%AF-%D9%81%D9%8A-%D8%A7%D9%8A-%D8%A8%D9%8A-%D8%B3%D9%86%D9%87-%D8%AE%D8%A7%D8%B5-%D8%BA%D9%8A%D8%B1-%D9%85%D8%B4%D8%AA%D8%B1%D9%83"
+                    class="btn btn-primary"
+                    role="button"
+                    >اطلب الآن</a
+                  >
                 </div>
               </div>
             </div>
@@ -1123,7 +1358,12 @@
                     <li>✓ تفعيل فوري</li>
                     <li>✓ دعم عملاء</li>
                   </ul>
-                  <button class="btn btn-success">اطلب الآن</button>
+                  <a
+                    href="https://subfasts.com/products/shahid-vip-%D8%B4%D8%A7%D9%87%D8%AF-%D9%81%D9%8A-%D8%A7%D9%8A-%D8%A8%D9%8A-3-%D8%B4%D9%87%D9%88%D8%B1-%D9%85%D8%B4%D8%AA%D8%B1%D9%83"
+                    class="btn btn-success"
+                    role="button"
+                    >اطلب الآن</a
+                  >
                 </div>
               </div>
             </div>
@@ -1141,7 +1381,12 @@
                     <li>✓ دعم أولوية</li>
                     <li>✓ حماية الحساب</li>
                   </ul>
-                  <button class="btn btn-info">اطلب الآن</button>
+                  <a
+                    href="https://subfasts.com/products/shahid-vip-%D8%B4%D8%A7%D9%87%D8%AF-%D9%81%D9%8A-%D8%A7%D9%8A-%D8%A8%D9%8A-%D9%85%D8%B4%D8%AA%D8%B1%D9%83"
+                    class="btn btn-info"
+                    role="button"
+                    >اطلب الآن</a
+                  >
                 </div>
               </div>
             </div>
@@ -1159,7 +1404,12 @@
                     <li>✓ ضمان ممتد</li>
                     <li>✓ توفير أقصى</li>
                   </ul>
-                  <button class="btn btn-warning">اطلب الآن</button>
+                  <a
+                    href="https://subfasts.com/products/shahid-vip-%D8%B4%D8%A7%D9%87%D8%AF-%D9%81%D9%8A-%D8%A7%D9%8A-%D8%A8%D9%8A-%D9%85%D8%B4%D8%AA%D8%B1%D9%83"
+                    class="btn btn-warning"
+                    role="button"
+                    >اطلب الآن</a
+                  >
                 </div>
               </div>
             </div>
@@ -1168,8 +1418,39 @@
       </div>
     </section>
 
-    <!-- About-->
+    <!-- Promotion Bar and Countdown Timer -->
+    <section class="page-section promotion-section">
+      <div class="container">
+        <div class="promotion-bar">
+          <div class="scrolling-text">
+            <p>
+              🎉 هناك شهر مجاني من YouTube Premium — سارع بالاشتراك لفترة
+              محدودة!
+            </p>
+          </div>
+        </div>
+        <div class="countdown-container">
+          <div class="countdown-timer">
+            <div class="countdown-item">
+              <span id="days">٩</span>
+              <span class="countdown-label">أيام</span>
+            </div>
+            <div class="countdown-separator">:</div>
+            <div class="countdown-item">
+              <span id="hours">٢٣</span>
+              <span class="countdown-label">ساعة</span>
+            </div>
+            <div class="countdown-separator">:</div>
+            <div class="countdown-item">
+              <span id="minutes">٥٩</span>
+              <span class="countdown-label">دقيقة</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
+    <!-- About-->
 
     <!-- Clients-->
     <!-- Testimonials -->
@@ -1329,7 +1610,7 @@
             <div class="contact-cards">
               <a
                 class="contact-card"
-                href="https://wa.me/966549245889"
+                href="https://wa.me/966591673717"
                 target="_blank"
                 rel="noopener"
               >
@@ -1338,16 +1619,16 @@
                 </div>
                 <div class="contact-info">
                   <div class="contact-label">واتساب</div>
-                  <div class="contact-number">+966 54 924 5589</div>
+                  <div class="contact-number">+966 59 167 3717</div>
                 </div>
               </a>
-              <a class="contact-card" href="tel:+966549245889">
+              <a class="contact-card" href="tel:+966591673717">
                 <div class="contact-icon phone">
                   <i class="fas fa-phone"></i>
                 </div>
                 <div class="contact-info">
                   <div class="contact-label">اتصال مباشر</div>
-                  <div class="contact-number">+966 54 924 5589</div>
+                  <div class="contact-number">+966 59 167 3717</div>
                 </div>
               </a>
             </div>
@@ -1567,7 +1848,173 @@
           window.scrollTo({ top: 0, behavior: "smooth" });
         });
       })();
-    </script>
 
+      // Countdown Timer Logic
+      (function () {
+        // تحويل الأرقام العربية
+        const arabicNumbers = [
+          "٠",
+          "١",
+          "٢",
+          "٣",
+          "٤",
+          "٥",
+          "٦",
+          "٧",
+          "٨",
+          "٩",
+        ];
+
+        // عناصر العداد التنازلي
+        const daysElement = document.getElementById("days");
+        const hoursElement = document.getElementById("hours");
+        const minutesElement = document.getElementById("minutes");
+
+        // تخزين القيم السابقة للمقارنة
+        let prevDays, prevHours, prevMinutes;
+
+        // تحويل الرقم إلى أرقام عربية
+        function toArabicNumber(num) {
+          return num
+            .toString()
+            .split("")
+            .map((digit) => arabicNumbers[digit])
+            .join("");
+        }
+
+        // تحديث عنصر مع تأثير انتقالي
+        function updateElementWithAnimation(element, newValue, prevValue) {
+          if (!element) return;
+
+          if (newValue !== prevValue) {
+            // إنشاء عنصر للقيمة الجديدة
+            const newSpan = document.createElement("span");
+            newSpan.textContent = newValue;
+            newSpan.className = "number-new";
+
+            // إنشاء عنصر للقيمة القديمة إذا كانت موجودة
+            if (prevValue !== undefined) {
+              const oldSpan = document.createElement("span");
+              oldSpan.textContent = prevValue;
+              oldSpan.className = "number-old";
+              element.innerHTML = "";
+              element.appendChild(oldSpan);
+            }
+
+            // إضافة القيمة الجديدة
+            element.appendChild(newSpan);
+          } else {
+            element.textContent = newValue;
+          }
+        }
+
+        // تحديث العداد التنازلي
+        function updateCountdown() {
+          // الحصول على الوقت المتبقي
+          if (!window.countdownEndTime) {
+            // إعداد العداد التنازلي ليبدأ من 9 أيام
+            resetCountdown();
+          }
+
+          const now = new Date().getTime();
+          const timeLeft = window.countdownEndTime - now;
+
+          // حساب الأيام والساعات والدقائق والثواني
+          const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+          const hours = Math.floor(
+            (timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+          );
+          const minutes = Math.floor(
+            (timeLeft % (1000 * 60 * 60)) / (1000 * 60)
+          );
+          const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+          // تحويل الأرقام إلى أرقام عربية
+          const arabicDays = toArabicNumber(days);
+          const arabicHours = toArabicNumber(hours);
+          const arabicMinutes = toArabicNumber(minutes);
+
+          // تحديث العناصر مع تأثير انتقالي
+          if (daysElement)
+            updateElementWithAnimation(daysElement, arabicDays, prevDays);
+          if (hoursElement)
+            updateElementWithAnimation(hoursElement, arabicHours, prevHours);
+          if (minutesElement)
+            updateElementWithAnimation(
+              minutesElement,
+              arabicMinutes,
+              prevMinutes
+            );
+
+          // تخزين القيم الحالية للمقارنة في التحديث التالي
+          prevDays = arabicDays;
+          prevHours = arabicHours;
+          prevMinutes = arabicMinutes;
+
+          // إعادة تعيين العداد عند انتهاء الوقت
+          if (timeLeft < 0) {
+            resetCountdown();
+          }
+        }
+
+        // إعادة تعيين العداد ليبدأ من 9 أيام
+        function resetCountdown() {
+          const now = new Date().getTime();
+          // 9 أيام بالمللي ثانية
+          window.countdownEndTime = now + 9 * 24 * 60 * 60 * 1000;
+        }
+
+        // تحديث العداد كل ثانية
+        setInterval(updateCountdown, 1000);
+
+        // تشغيل العداد فوراً
+        updateCountdown();
+
+        // إضافة تأثيرات CSS للعداد
+        const style = document.createElement("style");
+        style.textContent = `
+          @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+          }
+          .pulse {
+            animation: pulse 0.5s ease-in-out;
+          }
+          
+          .countdown-item span {
+            position: relative;
+            display: inline-block;
+          }
+          
+          .number-old {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            animation: slideUp 0.5s forwards;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+          
+          .number-new {
+            animation: slideIn 0.5s forwards;
+          }
+          
+          @keyframes slideUp {
+            0% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(-100%); opacity: 0; }
+          }
+          
+          @keyframes slideIn {
+            0% { transform: translateY(100%); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+          }
+        `;
+        document.head.appendChild(style);
+      })();
+    </script>
   </body>
 </html>
