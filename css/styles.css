@@ -11310,24 +11310,33 @@ header.masthead {
   padding-bottom: 6rem;
   text-align: center;
   color: #fff;
-  background-image: url("../subfasts-store/assets/img/header-bg1.webp");
+  background-image: url("/subfasts-store/assets/img/Netflix\ banner.webp");
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-position: center center;
-  background-size: contain;
-  animation: changeBg 8s infinite alternate;
+  /* background-size: inherit; */
+  background-size: 100% auto;
+  animation: changeBg 20s infinite alternate;
 }
 
 @keyframes changeBg {
   0% {
-    background-image: url("../subfasts-store/assets/img/header-bg1.webp");
+    background-image: url("/subfasts-store/assets/img/Netflix\ banner.webp");
+  }
+  25% {
+    background-image: url("/subfasts-store/assets/img/Netflix\ Cinema.jpeg");
+  }
+  50% {
+    background-image: url("/subfasts-store/assets/img/Shahid\ VIP\ Dark.jpeg");
+  }
+  75% {
+    background-image: url("../subfasts-store/assets/img/Shahid\ light.jpeg");
   }
   100% {
-    background-image: url("../subfasts-store/assets/img/header-bg2.webp");
+    background-image: url("../subfasts-store/assets/img/Shahid-dark.jpeg");
   }
 }
 
-///
 header.masthead .masthead-subheading {
   font-size: 1.5rem;
   font-style: italic;
