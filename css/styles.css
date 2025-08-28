@@ -11177,7 +11177,7 @@ p {
 }
 
 .page-section {
-  padding: 6rem 0;
+  padding: 1rem 0;
 }
 .page-section h2.section-heading,
 .page-section .section-heading.h2 {
@@ -11311,7 +11311,7 @@ header.masthead {
   text-align: center;
   color: #fff;
   /* background-image: url("/subfasts-store/assets/img/Netflix\ banner.webp"); */
-  background-image: url("/subfasts-store/assets/img/WhatsApp\ Image\ Shahid.jpg");
+  background-image: url("/subfasts-store/assets/img/WhatsApp_Image_Shahid.jpg");
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-position: center center;
@@ -11324,20 +11324,20 @@ header.masthead {
 @keyframes changeBg {
   0% {
     /* background-image: url("/subfasts-store/assets/img/Netflix\ banner.webp"); */
-    background-image: url("/subfasts-store/assets/img/WhatsApp\ Image\ Shahid.jpg");
+    background-image: url("/subfasts-store/assets/img/WhatsApp_Image_Shahid.jpg");
   }
   25% {
-    background-image: url("/subfasts-store/assets/img/Netflix\ Cinema.jpeg");
+    background-image: url("/subfasts-store/assets/img/Netflix_Cinema.jpeg");
   }
   50% {
-    background-image: url("/subfasts-store/assets/img/Shahid\ VIP\ Dark.jpeg");
+    background-image: url("/subfasts-store/assets/img/Shahid_VIP_Dark.jpeg");
   }
   75% {
-    background-image: url("../subfasts-store/assets/img/Shahid\ light.jpeg");
+    background-image: url("../subfasts-store/assets/img/Shahid_light.jpeg");
   }
   100% {
     /* background-image: url("../subfasts-store/assets/img/Shahid\ VIP\ logo.webp"); */
-    background-image: url("../subfasts-store/assets/img/WhatsApp\ Image\ Netflix.jpg");
+    background-image: url("../subfasts-store/assets/img/WhatsApp_Image_Netflix.jpg");
   }
 }
 
