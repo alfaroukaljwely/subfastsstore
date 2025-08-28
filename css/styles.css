@@ -11195,7 +11195,6 @@ p {
     "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   margin-bottom: 4rem;
 }
-
 @media (min-width: 768px) {
   section {
     padding: 9rem 0;
@@ -11209,7 +11208,6 @@ p {
   font-size: 1.125rem;
   font-weight: 700;
 }
-
 .btn-social {
   height: 2.5rem;
   width: 2.5rem;
@@ -11219,7 +11217,6 @@ p {
   padding: 0;
   border-radius: 100%;
 }
-
 #mainNav {
   padding-top: 1rem;
   padding-bottom: 1rem;
